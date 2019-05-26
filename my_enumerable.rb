@@ -22,13 +22,13 @@ module Enumerable
     end
 
     def my_map
-        arr = []
+        my_arr = []
         if block_given?
-            self.my_each {|x| arr << yield(x)}
+            self.my_each {|x| my_arr << yield(x)}
         else
-            arr
+            my_arr
         end
-        arr
+        my_arr
     end
 
     def my_count
@@ -43,3 +43,66 @@ module Enumerable
         count
     end
 
+    def my_all?
+        if block_given?
+            self.my_each do |x|
+                return false unless yield(x)
+            end
+            true
+        else
+            self
+        end  
+    end
+
+    def my_any?
+        if block_given?
+            self.my_each do |x|
+                return true if yield(x)
+            end
+            false
+        else
+           self 
+        end
+    end
+
+    def my_none?
+        if block_given?
+            self.my_each do |x|
+                return false if yield(x)
+            end
+            true
+        else
+            self
+        end
+    end
+
+    def my_select
+        my_arr = []
+        if block_given?
+            self.my_each {|x| my_arr << x if yield(x)}
+            my_arr
+        else
+            self
+        end
+    end
+    def my_filter
+        my_select() yield
+    end
+
+    def my_inject(default = nil)
+        default ? total = default : total = self[0]
+        if block_given?
+            for i in self[1..self.length] do
+                total = yield(total, i)
+            end
+            total
+        else
+            self
+        end
+    end
+
+    def multiply_els(my_array)
+        my_array.my_inject{|sum, n| sum * n}
+    end
+
+end
