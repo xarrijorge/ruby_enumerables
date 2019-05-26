@@ -85,10 +85,9 @@ module Enumerable
             self
         end
     end
-    def my_filter
-        my_select() yield
-    end
 
+    alias my_filter my_select
+    
     def my_inject(default = nil)
         default ? total = default : total = self[0]
         if block_given?
