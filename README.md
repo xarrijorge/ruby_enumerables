@@ -1,6 +1,6 @@
 # ruby_enumerables
 ### Recreating some of Ruby's built in Enumerable methods
-#### _At present, this repo contains the following methods, all methods are prefixed with 'my_':_
+#### _At present, this repo contains the following methods, all methods are prefixed with 'my\_':_
 
 * all?
 * any?
