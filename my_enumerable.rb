@@ -75,7 +75,7 @@ module Enumerable
         my_arr
     end
     
-    def multiply_els(my_array)
+    def my_multiply_els(my_array)
         my_array.my_inject{|sum, n| sum * n}
     end
 
