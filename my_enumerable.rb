@@ -87,7 +87,7 @@ module Enumerable
     end
 
     alias my_filter my_select
-    
+
     def my_inject(default = nil)
         default ? total = default : total = self[0]
         if block_given?
@@ -99,6 +99,8 @@ module Enumerable
             self
         end
     end
+    
+    alias my_reduce my_inject
 
     def multiply_els(my_array)
         my_array.my_inject{|sum, n| sum * n}
